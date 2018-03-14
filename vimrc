@@ -48,7 +48,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -57,25 +56,17 @@ Plugin 'L9'
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'visi-pivi-sivi/leerkan-vim-colors'
+" Install Vim-go  
+Plugin 'fatih/vim-go'  
 
-Plugin 'eduardoHoefel/matrix.vim'
+Plugin 'lanox/lanox-vim-theme'
 
-Plugin 'lu-ren/SerialExperimentsLain'
-
-Plugin 'nightsense/office'
-
-Plugin 'tudurom/bleh.vim'
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -92,12 +83,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 nmap <C-Z> :NERDTreeToggle<CR>
-nmap <C-X> :TagbarToggle<CR>
-
-" nnoremap <C-C> :bp<CR>
-" nnoremap <C-V> :bn<CR>
-" let g:tagbar_width = 30
-" let g:tagbar_autofocus = 1
 
 let g:NERDTreeQuitOnOpen = 1
 colorscheme lanox
