@@ -13,7 +13,6 @@ runtime! archlinux.vim
 " If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
 " Or better yet, read /usr/share/vim/vim74/vimrc_example.vim or the vim manual
 " and configure vim to your own liking!
-colorscheme koehler
 set nu
 set ts=4
 set sw=4
@@ -25,7 +24,8 @@ set guioptions-=b
 syntax on
 set autoindent
 set encoding=utf8
-set guifont=Nimbus\ Mono\ PS\ 12
+
+set guifont=Courier\ 10\ Pitch\ 12
 
 set expandtab
 %retab!
@@ -64,7 +64,8 @@ Plugin 'scrooloose/nerdtree'
 
 " Install Vim-go  
 Plugin 'fatih/vim-go'  
-
+Plugin 'jonsmithers/experimental-lit-html-vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'lanox/lanox-vim-theme'
 
 call vundle#end()            " required
@@ -86,3 +87,12 @@ nmap <C-Z> :NERDTreeToggle<CR>
 
 let g:NERDTreeQuitOnOpen = 1
 colorscheme lanox
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+
+autocmd BufNewFile,BufRead *.go setlocal expandtab tabstop=4 shiftwidth=4 
+
+autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2 
