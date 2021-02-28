@@ -24,10 +24,8 @@ set guioptions-=b
 syntax on
 set autoindent
 set encoding=utf8
+set guifont=Courier\ New:h15
 
-set guifont=Courier\ 10\ Pitch\ 12
-
-set expandtab
 %retab!
 
 set nocompatible
@@ -64,7 +62,10 @@ Plugin 'scrooloose/nerdtree'
 
 " Install Vim-go  
 Plugin 'fatih/vim-go'  
-Plugin 'jonsmithers/experimental-lit-html-vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
+" Plugin 'jonsmithers/experimental-lit-html-vim'
+Plugin 'jonsmithers/vim-html-template-literals'
 Plugin 'pangloss/vim-javascript'
 Plugin 'lanox/lanox-vim-theme'
 
@@ -83,7 +84,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-nmap <C-Z> :NERDTreeToggle<CR>
+nmap <C-R> :NERDTreeToggle<CR>
 
 let g:NERDTreeQuitOnOpen = 1
 colorscheme lanox
@@ -92,7 +93,14 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
+let g:htl_css_templates = 1
+let g:htl_all_templates = 1
 
 autocmd BufNewFile,BufRead *.go setlocal expandtab tabstop=4 shiftwidth=4 
 
 autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2 
+autocmd BufNewFile,BufRead *.html setlocal expandtab tabstop=2 shiftwidth=2 
+
+set expandtab
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
