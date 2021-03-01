@@ -24,7 +24,20 @@ set guioptions-=b
 syntax on
 set autoindent
 set encoding=utf8
-set guifont=Courier\ New:h15
+
+if has("gui_running")
+  if has("gui_gtk2") || has("gui_gtk3")
+    set guifont=Courier\ Bold\ 12
+  elseif has("gui_photon")
+    set guifont=Courier\ New:s12
+  elseif has("gui_kde")
+    set guifont=Courier\ New/12/-1/5/50/0/0/0/1/0
+  elseif has("x11")
+    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+  else
+    set guifont=Courier_New:h12:cDEFAULT
+  endif
+endif
 
 %retab!
 
@@ -97,9 +110,9 @@ let g:htl_css_templates = 1
 let g:htl_all_templates = 1
 
 autocmd BufNewFile,BufRead *.go setlocal expandtab tabstop=4 shiftwidth=4 
-
 autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2 
 autocmd BufNewFile,BufRead *.html setlocal expandtab tabstop=2 shiftwidth=2 
+autocmd BufNewFile,BufRead *.css setlocal expandtab tabstop=2 shiftwidth=2 
 
 set expandtab
 set noerrorbells visualbell t_vb=
