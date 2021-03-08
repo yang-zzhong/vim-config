@@ -35,7 +35,8 @@ if has("gui_running")
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
   else
-    set guifont=Courier_New:h12:cDEFAULT
+    set guifont=Courier_New:h15
+    set linespace=4
   endif
 endif
 
