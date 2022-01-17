@@ -1,3 +1,4 @@
+
 " All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
 " /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
@@ -35,12 +36,14 @@ if has("gui_running")
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
   else
-    set guifont=Courier_New:h15
-    set linespace=4
+    set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h16
+    set linespace=1
   endif
 endif
 
 %retab!
+
+set updatetime=100
 
 set nocompatible
 filetype plugin indent on
@@ -73,15 +76,25 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plugin 'user/L9', {'name': 'newL9'}
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
 " Install Vim-go  
 Plugin 'fatih/vim-go'  
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
-" Plugin 'jonsmithers/experimental-lit-html-vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'whatyouhide/vim-gotham'
 Plugin 'jonsmithers/vim-html-template-literals'
 Plugin 'pangloss/vim-javascript'
-Plugin 'lanox/lanox-vim-theme'
+Plugin 'hashivim/vim-terraform'
+Plugin 'kyoz/purify', { 'rtp': 'vim' }
+Plugin 'preservim/tagbar'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Use release branch (recommend)
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 call vundle#end()            " required
 
@@ -101,7 +114,6 @@ filetype plugin indent on    " required
 nmap <C-R> :NERDTreeToggle<CR>
 
 let g:NERDTreeQuitOnOpen = 1
-colorscheme lanox
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -115,6 +127,52 @@ autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal expandtab tabstop=2 shiftwidth=2 
 autocmd BufNewFile,BufRead *.css setlocal expandtab tabstop=2 shiftwidth=2 
 
+" fold
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 set expandtab
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+set background=dark
+
+" colorscheme gotham
+colorscheme purify
+
+" install powerline and set guifont=powerline_font
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" tagbar
+nmap <C-J> :TagbarToggle<CR>
+
+set scrolloff=5
